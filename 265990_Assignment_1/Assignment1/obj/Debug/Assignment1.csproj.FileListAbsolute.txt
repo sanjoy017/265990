@@ -1,0 +1,7 @@
+D:\BITM training\Git\batch6\Assignment1\Assignment1\bin\Debug\Assignment1.exe.config
+D:\BITM training\Git\batch6\Assignment1\Assignment1\bin\Debug\Assignment1.exe
+D:\BITM training\Git\batch6\Assignment1\Assignment1\bin\Debug\Assignment1.pdb
+D:\BITM training\Git\batch6\Assignment1\Assignment1\obj\Debug\Assignment1.csprojAssemblyReference.cache
+D:\BITM training\Git\batch6\Assignment1\Assignment1\obj\Debug\Assignment1.csproj.CoreCompileInputs.cache
+D:\BITM training\Git\batch6\Assignment1\Assignment1\obj\Debug\Assignment1.exe
+D:\BITM training\Git\batch6\Assignment1\Assignment1\obj\Debug\Assignment1.pdb
