@@ -13,6 +13,7 @@ namespace ArrayReverse
     public partial class ListExample : Form
     {
         List<string> names = new List<string> {"Sanjoy"};
+        List<int> ages = new List<int> { 23 };
         
         public ListExample()
         {
@@ -23,6 +24,7 @@ namespace ArrayReverse
         {
             
             names.Add(nameTextBox.Text);
+            ages.Add(Convert.ToInt32())
             
 
             //for (int i = 0; i < name.Count; i++)
