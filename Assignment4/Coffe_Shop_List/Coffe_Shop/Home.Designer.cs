@@ -32,7 +32,7 @@
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.orderLabel = new System.Windows.Forms.Label();
             this.customerNameLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.orderComboBox = new System.Windows.Forms.ComboBox();
             this.contactNoTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.addressLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.showButton = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,9 +55,10 @@
             // 
             // groupBox
             // 
+            this.groupBox.Controls.Add(this.showButton);
             this.groupBox.Controls.Add(this.orderLabel);
             this.groupBox.Controls.Add(this.customerNameLabel);
-            this.groupBox.Controls.Add(this.button1);
+            this.groupBox.Controls.Add(this.saveButton);
             this.groupBox.Controls.Add(this.orderComboBox);
             this.groupBox.Controls.Add(this.contactNoTextBox);
             this.groupBox.Controls.Add(this.addressTextBox);
@@ -96,17 +98,17 @@
             this.customerNameLabel.TabIndex = 22;
             this.customerNameLabel.Text = "Customer Name";
             // 
-            // button1
+            // saveButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button1.Location = new System.Drawing.Point(216, 326);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 44);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.saveButton.Location = new System.Drawing.Point(95, 333);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 44);
+            this.saveButton.TabIndex = 21;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // orderComboBox
             // 
@@ -182,6 +184,18 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Contact No";
             // 
+            // showButton
+            // 
+            this.showButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showButton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.showButton.Location = new System.Drawing.Point(296, 333);
+            this.showButton.Name = "showButton";
+            this.showButton.Size = new System.Drawing.Size(86, 44);
+            this.showButton.TabIndex = 24;
+            this.showButton.Text = "Show";
+            this.showButton.UseVisualStyleBackColor = true;
+            this.showButton.Click += new System.EventHandler(this.showButton_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,7 +215,7 @@
 
         private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.GroupBox groupBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.ComboBox orderComboBox;
         private System.Windows.Forms.TextBox contactNoTextBox;
         private System.Windows.Forms.TextBox addressTextBox;
@@ -212,6 +226,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label orderLabel;
         private System.Windows.Forms.Label customerNameLabel;
+        private System.Windows.Forms.Button showButton;
     }
 }
 
