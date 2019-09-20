@@ -29,43 +29,43 @@
         private void InitializeComponent()
         {
             this.studentGroupBox = new System.Windows.Forms.GroupBox();
+            this.gpaPointCheckLabel = new System.Windows.Forms.Label();
+            this.mobileCheckLabel = new System.Windows.Forms.Label();
+            this.nameCheckLabel = new System.Windows.Forms.Label();
+            this.idCheckLabel = new System.Windows.Forms.Label();
+            this.addButton = new System.Windows.Forms.Button();
             this.gpaPointTextBox = new System.Windows.Forms.TextBox();
             this.gpaPointLabel = new System.Windows.Forms.Label();
             this.ageTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.ageLabel = new System.Windows.Forms.Label();
             this.addressLabel = new System.Windows.Forms.Label();
-            this.MobileTextBox = new System.Windows.Forms.TextBox();
+            this.mobileTextBox = new System.Windows.Forms.TextBox();
             this.MobileLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.idLabel = new System.Windows.Forms.Label();
             this.richTextBox = new System.Windows.Forms.RichTextBox();
-            this.addButton = new System.Windows.Forms.Button();
-            this.showAllButton = new System.Windows.Forms.Button();
-            this.idCheckLabel = new System.Windows.Forms.Label();
-            this.nameCheckLabel = new System.Windows.Forms.Label();
-            this.mobileCheckLabel = new System.Windows.Forms.Label();
             this.gpaPointGroupBox = new System.Windows.Forms.GroupBox();
-            this.maxLabel = new System.Windows.Forms.Label();
-            this.maxTextBox = new System.Windows.Forms.TextBox();
-            this.maxNameLabel = new System.Windows.Forms.Label();
-            this.maxNameTextBox = new System.Windows.Forms.TextBox();
-            this.minLabel = new System.Windows.Forms.Label();
-            this.minTextBox = new System.Windows.Forms.TextBox();
-            this.minNameabel = new System.Windows.Forms.Label();
-            this.minNameTextBox = new System.Windows.Forms.TextBox();
-            this.avgLabel = new System.Windows.Forms.Label();
-            this.avgTextBox = new System.Windows.Forms.TextBox();
+            this.totalTextBox = new System.Windows.Forms.TextBox();
             this.totalLabel = new System.Windows.Forms.Label();
-            this.totalTextBox6 = new System.Windows.Forms.TextBox();
+            this.minNameTextBox = new System.Windows.Forms.TextBox();
+            this.minNameabel = new System.Windows.Forms.Label();
+            this.avgTextBox = new System.Windows.Forms.TextBox();
+            this.maxNameTextBox = new System.Windows.Forms.TextBox();
+            this.minTextBox = new System.Windows.Forms.TextBox();
+            this.avgLabel = new System.Windows.Forms.Label();
+            this.maxNameLabel = new System.Windows.Forms.Label();
+            this.minLabel = new System.Windows.Forms.Label();
+            this.maxTextBox = new System.Windows.Forms.TextBox();
+            this.maxLabel = new System.Windows.Forms.Label();
             this.searchGroupBox = new System.Windows.Forms.GroupBox();
-            this.idRadioButton = new System.Windows.Forms.RadioButton();
-            this.nameRadioButton = new System.Windows.Forms.RadioButton();
-            this.mobileRadioButton = new System.Windows.Forms.RadioButton();
             this.searchButton = new System.Windows.Forms.Button();
-            this.gpaPointCheckLabel = new System.Windows.Forms.Label();
+            this.mobileRadioButton = new System.Windows.Forms.RadioButton();
+            this.nameRadioButton = new System.Windows.Forms.RadioButton();
+            this.idRadioButton = new System.Windows.Forms.RadioButton();
+            this.showButton = new System.Windows.Forms.Button();
             this.studentGroupBox.SuspendLayout();
             this.gpaPointGroupBox.SuspendLayout();
             this.searchGroupBox.SuspendLayout();
@@ -77,7 +77,6 @@
             this.studentGroupBox.Controls.Add(this.mobileCheckLabel);
             this.studentGroupBox.Controls.Add(this.nameCheckLabel);
             this.studentGroupBox.Controls.Add(this.idCheckLabel);
-            this.studentGroupBox.Controls.Add(this.showAllButton);
             this.studentGroupBox.Controls.Add(this.addButton);
             this.studentGroupBox.Controls.Add(this.gpaPointTextBox);
             this.studentGroupBox.Controls.Add(this.gpaPointLabel);
@@ -85,7 +84,7 @@
             this.studentGroupBox.Controls.Add(this.addressTextBox);
             this.studentGroupBox.Controls.Add(this.ageLabel);
             this.studentGroupBox.Controls.Add(this.addressLabel);
-            this.studentGroupBox.Controls.Add(this.MobileTextBox);
+            this.studentGroupBox.Controls.Add(this.mobileTextBox);
             this.studentGroupBox.Controls.Add(this.MobileLabel);
             this.studentGroupBox.Controls.Add(this.nameTextBox);
             this.studentGroupBox.Controls.Add(this.nameLabel);
@@ -93,10 +92,56 @@
             this.studentGroupBox.Controls.Add(this.idLabel);
             this.studentGroupBox.Location = new System.Drawing.Point(35, 22);
             this.studentGroupBox.Name = "studentGroupBox";
-            this.studentGroupBox.Size = new System.Drawing.Size(417, 324);
+            this.studentGroupBox.Size = new System.Drawing.Size(433, 308);
             this.studentGroupBox.TabIndex = 2;
             this.studentGroupBox.TabStop = false;
             this.studentGroupBox.Text = "Student";
+            // 
+            // gpaPointCheckLabel
+            // 
+            this.gpaPointCheckLabel.AutoSize = true;
+            this.gpaPointCheckLabel.Location = new System.Drawing.Point(324, 220);
+            this.gpaPointCheckLabel.Name = "gpaPointCheckLabel";
+            this.gpaPointCheckLabel.Size = new System.Drawing.Size(37, 13);
+            this.gpaPointCheckLabel.TabIndex = 18;
+            this.gpaPointCheckLabel.Text = "0-4.00";
+            // 
+            // mobileCheckLabel
+            // 
+            this.mobileCheckLabel.AutoSize = true;
+            this.mobileCheckLabel.Location = new System.Drawing.Point(324, 97);
+            this.mobileCheckLabel.Name = "mobileCheckLabel";
+            this.mobileCheckLabel.Size = new System.Drawing.Size(86, 13);
+            this.mobileCheckLabel.TabIndex = 17;
+            this.mobileCheckLabel.Text = "* U 11 Character";
+            // 
+            // nameCheckLabel
+            // 
+            this.nameCheckLabel.AutoSize = true;
+            this.nameCheckLabel.Location = new System.Drawing.Point(321, 58);
+            this.nameCheckLabel.Name = "nameCheckLabel";
+            this.nameCheckLabel.Size = new System.Drawing.Size(98, 13);
+            this.nameCheckLabel.TabIndex = 16;
+            this.nameCheckLabel.Text = "* Max 30 Character";
+            // 
+            // idCheckLabel
+            // 
+            this.idCheckLabel.AutoSize = true;
+            this.idCheckLabel.Location = new System.Drawing.Point(321, 22);
+            this.idCheckLabel.Name = "idCheckLabel";
+            this.idCheckLabel.Size = new System.Drawing.Size(77, 13);
+            this.idCheckLabel.TabIndex = 15;
+            this.idCheckLabel.Text = "* U 4Character";
+            // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(324, 263);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 39);
+            this.addButton.TabIndex = 14;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // gpaPointTextBox
             // 
@@ -105,6 +150,7 @@
             this.gpaPointTextBox.Name = "gpaPointTextBox";
             this.gpaPointTextBox.Size = new System.Drawing.Size(146, 20);
             this.gpaPointTextBox.TabIndex = 8;
+            this.gpaPointTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gpaPointTextBox_KeyPress);
             // 
             // gpaPointLabel
             // 
@@ -121,6 +167,7 @@
             this.ageTextBox.Name = "ageTextBox";
             this.ageTextBox.Size = new System.Drawing.Size(146, 20);
             this.ageTextBox.TabIndex = 9;
+            this.ageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ageTextBox_KeyPress);
             // 
             // addressTextBox
             // 
@@ -147,13 +194,14 @@
             this.addressLabel.TabIndex = 4;
             this.addressLabel.Text = "Address";
             // 
-            // MobileTextBox
+            // mobileTextBox
             // 
-            this.MobileTextBox.Location = new System.Drawing.Point(152, 97);
-            this.MobileTextBox.MaxLength = 11;
-            this.MobileTextBox.Name = "MobileTextBox";
-            this.MobileTextBox.Size = new System.Drawing.Size(146, 20);
-            this.MobileTextBox.TabIndex = 11;
+            this.mobileTextBox.Location = new System.Drawing.Point(152, 97);
+            this.mobileTextBox.MaxLength = 11;
+            this.mobileTextBox.Name = "mobileTextBox";
+            this.mobileTextBox.Size = new System.Drawing.Size(146, 20);
+            this.mobileTextBox.TabIndex = 11;
+            this.mobileTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mobileNumberTextBox_KeyPress);
             // 
             // MobileLabel
             // 
@@ -171,6 +219,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(146, 20);
             this.nameTextBox.TabIndex = 12;
+            this.nameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTextBox_KeyPress);
             // 
             // nameLabel
             // 
@@ -201,61 +250,15 @@
             // richTextBox
             // 
             this.richTextBox.Cursor = System.Windows.Forms.Cursors.No;
-            this.richTextBox.Location = new System.Drawing.Point(475, 41);
+            this.richTextBox.Location = new System.Drawing.Point(35, 347);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(227, 305);
+            this.richTextBox.Size = new System.Drawing.Size(630, 98);
             this.richTextBox.TabIndex = 3;
             this.richTextBox.Text = "";
             // 
-            // addButton
-            // 
-            this.addButton.Location = new System.Drawing.Point(18, 258);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 39);
-            this.addButton.TabIndex = 14;
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // showAllButton
-            // 
-            this.showAllButton.Location = new System.Drawing.Point(162, 258);
-            this.showAllButton.Name = "showAllButton";
-            this.showAllButton.Size = new System.Drawing.Size(75, 39);
-            this.showAllButton.TabIndex = 14;
-            this.showAllButton.Text = "Show All";
-            this.showAllButton.UseVisualStyleBackColor = true;
-            // 
-            // idCheckLabel
-            // 
-            this.idCheckLabel.AutoSize = true;
-            this.idCheckLabel.Location = new System.Drawing.Point(321, 22);
-            this.idCheckLabel.Name = "idCheckLabel";
-            this.idCheckLabel.Size = new System.Drawing.Size(77, 13);
-            this.idCheckLabel.TabIndex = 15;
-            this.idCheckLabel.Text = "* U 4Character";
-            // 
-            // nameCheckLabel
-            // 
-            this.nameCheckLabel.AutoSize = true;
-            this.nameCheckLabel.Location = new System.Drawing.Point(321, 58);
-            this.nameCheckLabel.Name = "nameCheckLabel";
-            this.nameCheckLabel.Size = new System.Drawing.Size(98, 13);
-            this.nameCheckLabel.TabIndex = 16;
-            this.nameCheckLabel.Text = "* Max 30 Character";
-            // 
-            // mobileCheckLabel
-            // 
-            this.mobileCheckLabel.AutoSize = true;
-            this.mobileCheckLabel.Location = new System.Drawing.Point(324, 97);
-            this.mobileCheckLabel.Name = "mobileCheckLabel";
-            this.mobileCheckLabel.Size = new System.Drawing.Size(86, 13);
-            this.mobileCheckLabel.TabIndex = 17;
-            this.mobileCheckLabel.Text = "* U 11 Character";
-            // 
             // gpaPointGroupBox
             // 
-            this.gpaPointGroupBox.Controls.Add(this.totalTextBox6);
+            this.gpaPointGroupBox.Controls.Add(this.totalTextBox);
             this.gpaPointGroupBox.Controls.Add(this.totalLabel);
             this.gpaPointGroupBox.Controls.Add(this.minNameTextBox);
             this.gpaPointGroupBox.Controls.Add(this.minNameabel);
@@ -268,28 +271,74 @@
             this.gpaPointGroupBox.Controls.Add(this.maxTextBox);
             this.gpaPointGroupBox.Controls.Add(this.maxLabel);
             this.gpaPointGroupBox.Cursor = System.Windows.Forms.Cursors.No;
-            this.gpaPointGroupBox.Location = new System.Drawing.Point(35, 370);
+            this.gpaPointGroupBox.Location = new System.Drawing.Point(53, 469);
             this.gpaPointGroupBox.Name = "gpaPointGroupBox";
-            this.gpaPointGroupBox.Size = new System.Drawing.Size(265, 201);
+            this.gpaPointGroupBox.Size = new System.Drawing.Size(604, 86);
             this.gpaPointGroupBox.TabIndex = 4;
             this.gpaPointGroupBox.TabStop = false;
             this.gpaPointGroupBox.Text = "GPA Point";
             // 
-            // maxLabel
+            // totalTextBox
             // 
-            this.maxLabel.AutoSize = true;
-            this.maxLabel.Location = new System.Drawing.Point(25, 22);
-            this.maxLabel.Name = "maxLabel";
-            this.maxLabel.Size = new System.Drawing.Size(27, 13);
-            this.maxLabel.TabIndex = 0;
-            this.maxLabel.Text = "Max";
+            this.totalTextBox.Location = new System.Drawing.Point(473, 41);
+            this.totalTextBox.Name = "totalTextBox";
+            this.totalTextBox.Size = new System.Drawing.Size(115, 20);
+            this.totalTextBox.TabIndex = 1;
             // 
-            // maxTextBox
+            // totalLabel
             // 
-            this.maxTextBox.Location = new System.Drawing.Point(104, 19);
-            this.maxTextBox.Name = "maxTextBox";
-            this.maxTextBox.Size = new System.Drawing.Size(115, 20);
-            this.maxTextBox.TabIndex = 1;
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Location = new System.Drawing.Point(420, 41);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(31, 13);
+            this.totalLabel.TabIndex = 0;
+            this.totalLabel.Text = "Total";
+            // 
+            // minNameTextBox
+            // 
+            this.minNameTextBox.Location = new System.Drawing.Point(286, 41);
+            this.minNameTextBox.Name = "minNameTextBox";
+            this.minNameTextBox.Size = new System.Drawing.Size(115, 20);
+            this.minNameTextBox.TabIndex = 1;
+            // 
+            // minNameabel
+            // 
+            this.minNameabel.AutoSize = true;
+            this.minNameabel.Location = new System.Drawing.Point(207, 44);
+            this.minNameabel.Name = "minNameabel";
+            this.minNameabel.Size = new System.Drawing.Size(35, 13);
+            this.minNameabel.TabIndex = 0;
+            this.minNameabel.Text = "Name";
+            // 
+            // avgTextBox
+            // 
+            this.avgTextBox.Location = new System.Drawing.Point(473, 15);
+            this.avgTextBox.Name = "avgTextBox";
+            this.avgTextBox.Size = new System.Drawing.Size(115, 20);
+            this.avgTextBox.TabIndex = 1;
+            // 
+            // maxNameTextBox
+            // 
+            this.maxNameTextBox.Location = new System.Drawing.Point(72, 44);
+            this.maxNameTextBox.Name = "maxNameTextBox";
+            this.maxNameTextBox.Size = new System.Drawing.Size(115, 20);
+            this.maxNameTextBox.TabIndex = 1;
+            // 
+            // minTextBox
+            // 
+            this.minTextBox.Location = new System.Drawing.Point(286, 15);
+            this.minTextBox.Name = "minTextBox";
+            this.minTextBox.Size = new System.Drawing.Size(115, 20);
+            this.minTextBox.TabIndex = 1;
+            // 
+            // avgLabel
+            // 
+            this.avgLabel.AutoSize = true;
+            this.avgLabel.Location = new System.Drawing.Point(420, 15);
+            this.avgLabel.Name = "avgLabel";
+            this.avgLabel.Size = new System.Drawing.Size(26, 13);
+            this.avgLabel.TabIndex = 0;
+            this.avgLabel.Text = "Avg";
             // 
             // maxNameLabel
             // 
@@ -300,76 +349,30 @@
             this.maxNameLabel.TabIndex = 0;
             this.maxNameLabel.Text = "Name";
             // 
-            // maxNameTextBox
-            // 
-            this.maxNameTextBox.Location = new System.Drawing.Point(104, 45);
-            this.maxNameTextBox.Name = "maxNameTextBox";
-            this.maxNameTextBox.Size = new System.Drawing.Size(115, 20);
-            this.maxNameTextBox.TabIndex = 1;
-            // 
             // minLabel
             // 
             this.minLabel.AutoSize = true;
-            this.minLabel.Location = new System.Drawing.Point(25, 78);
+            this.minLabel.Location = new System.Drawing.Point(207, 18);
             this.minLabel.Name = "minLabel";
             this.minLabel.Size = new System.Drawing.Size(24, 13);
             this.minLabel.TabIndex = 0;
             this.minLabel.Text = "Min";
             // 
-            // minTextBox
+            // maxTextBox
             // 
-            this.minTextBox.Location = new System.Drawing.Point(104, 75);
-            this.minTextBox.Name = "minTextBox";
-            this.minTextBox.Size = new System.Drawing.Size(115, 20);
-            this.minTextBox.TabIndex = 1;
+            this.maxTextBox.Location = new System.Drawing.Point(72, 18);
+            this.maxTextBox.Name = "maxTextBox";
+            this.maxTextBox.Size = new System.Drawing.Size(115, 20);
+            this.maxTextBox.TabIndex = 1;
             // 
-            // minNameabel
+            // maxLabel
             // 
-            this.minNameabel.AutoSize = true;
-            this.minNameabel.Location = new System.Drawing.Point(25, 104);
-            this.minNameabel.Name = "minNameabel";
-            this.minNameabel.Size = new System.Drawing.Size(35, 13);
-            this.minNameabel.TabIndex = 0;
-            this.minNameabel.Text = "Name";
-            // 
-            // minNameTextBox
-            // 
-            this.minNameTextBox.Location = new System.Drawing.Point(104, 101);
-            this.minNameTextBox.Name = "minNameTextBox";
-            this.minNameTextBox.Size = new System.Drawing.Size(115, 20);
-            this.minNameTextBox.TabIndex = 1;
-            // 
-            // avgLabel
-            // 
-            this.avgLabel.AutoSize = true;
-            this.avgLabel.Location = new System.Drawing.Point(25, 135);
-            this.avgLabel.Name = "avgLabel";
-            this.avgLabel.Size = new System.Drawing.Size(26, 13);
-            this.avgLabel.TabIndex = 0;
-            this.avgLabel.Text = "Avg";
-            // 
-            // avgTextBox
-            // 
-            this.avgTextBox.Location = new System.Drawing.Point(104, 132);
-            this.avgTextBox.Name = "avgTextBox";
-            this.avgTextBox.Size = new System.Drawing.Size(115, 20);
-            this.avgTextBox.TabIndex = 1;
-            // 
-            // totalLabel
-            // 
-            this.totalLabel.AutoSize = true;
-            this.totalLabel.Location = new System.Drawing.Point(25, 161);
-            this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(31, 13);
-            this.totalLabel.TabIndex = 0;
-            this.totalLabel.Text = "Total";
-            // 
-            // totalTextBox6
-            // 
-            this.totalTextBox6.Location = new System.Drawing.Point(104, 158);
-            this.totalTextBox6.Name = "totalTextBox6";
-            this.totalTextBox6.Size = new System.Drawing.Size(115, 20);
-            this.totalTextBox6.TabIndex = 1;
+            this.maxLabel.AutoSize = true;
+            this.maxLabel.Location = new System.Drawing.Point(25, 22);
+            this.maxLabel.Name = "maxLabel";
+            this.maxLabel.Size = new System.Drawing.Size(27, 13);
+            this.maxLabel.TabIndex = 0;
+            this.maxLabel.Text = "Max";
             // 
             // searchGroupBox
             // 
@@ -377,34 +380,22 @@
             this.searchGroupBox.Controls.Add(this.mobileRadioButton);
             this.searchGroupBox.Controls.Add(this.nameRadioButton);
             this.searchGroupBox.Controls.Add(this.idRadioButton);
-            this.searchGroupBox.Location = new System.Drawing.Point(400, 374);
+            this.searchGroupBox.Location = new System.Drawing.Point(526, 38);
             this.searchGroupBox.Name = "searchGroupBox";
             this.searchGroupBox.Size = new System.Drawing.Size(139, 174);
             this.searchGroupBox.TabIndex = 5;
             this.searchGroupBox.TabStop = false;
             this.searchGroupBox.Text = "Search";
             // 
-            // idRadioButton
+            // searchButton
             // 
-            this.idRadioButton.AutoSize = true;
-            this.idRadioButton.Location = new System.Drawing.Point(15, 23);
-            this.idRadioButton.Name = "idRadioButton";
-            this.idRadioButton.Size = new System.Drawing.Size(36, 17);
-            this.idRadioButton.TabIndex = 0;
-            this.idRadioButton.TabStop = true;
-            this.idRadioButton.Text = "ID";
-            this.idRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // nameRadioButton
-            // 
-            this.nameRadioButton.AutoSize = true;
-            this.nameRadioButton.Location = new System.Drawing.Point(15, 53);
-            this.nameRadioButton.Name = "nameRadioButton";
-            this.nameRadioButton.Size = new System.Drawing.Size(53, 17);
-            this.nameRadioButton.TabIndex = 0;
-            this.nameRadioButton.TabStop = true;
-            this.nameRadioButton.Text = "Name";
-            this.nameRadioButton.UseVisualStyleBackColor = true;
+            this.searchButton.Location = new System.Drawing.Point(35, 131);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(82, 37);
+            this.searchButton.TabIndex = 1;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // mobileRadioButton
             // 
@@ -417,29 +408,44 @@
             this.mobileRadioButton.Text = "Mobile";
             this.mobileRadioButton.UseVisualStyleBackColor = true;
             // 
-            // searchButton
+            // nameRadioButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(35, 131);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(82, 37);
-            this.searchButton.TabIndex = 1;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.nameRadioButton.AutoSize = true;
+            this.nameRadioButton.Location = new System.Drawing.Point(15, 52);
+            this.nameRadioButton.Name = "nameRadioButton";
+            this.nameRadioButton.Size = new System.Drawing.Size(53, 17);
+            this.nameRadioButton.TabIndex = 0;
+            this.nameRadioButton.TabStop = true;
+            this.nameRadioButton.Text = "Name";
+            this.nameRadioButton.UseVisualStyleBackColor = true;
             // 
-            // gpaPointCheckLabel
+            // idRadioButton
             // 
-            this.gpaPointCheckLabel.AutoSize = true;
-            this.gpaPointCheckLabel.Location = new System.Drawing.Point(324, 220);
-            this.gpaPointCheckLabel.Name = "gpaPointCheckLabel";
-            this.gpaPointCheckLabel.Size = new System.Drawing.Size(37, 13);
-            this.gpaPointCheckLabel.TabIndex = 18;
-            this.gpaPointCheckLabel.Text = "0-4.00";
+            this.idRadioButton.AutoSize = true;
+            this.idRadioButton.Location = new System.Drawing.Point(15, 23);
+            this.idRadioButton.Name = "idRadioButton";
+            this.idRadioButton.Size = new System.Drawing.Size(36, 17);
+            this.idRadioButton.TabIndex = 0;
+            this.idRadioButton.TabStop = true;
+            this.idRadioButton.Text = "ID";
+            this.idRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // showButton
+            // 
+            this.showButton.Location = new System.Drawing.Point(501, 285);
+            this.showButton.Name = "showButton";
+            this.showButton.Size = new System.Drawing.Size(93, 39);
+            this.showButton.TabIndex = 6;
+            this.showButton.Text = "Show";
+            this.showButton.UseVisualStyleBackColor = true;
+            this.showButton.Click += new System.EventHandler(this.showButton_Click);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 596);
+            this.ClientSize = new System.Drawing.Size(713, 556);
+            this.Controls.Add(this.showButton);
             this.Controls.Add(this.searchGroupBox);
             this.Controls.Add(this.gpaPointGroupBox);
             this.Controls.Add(this.richTextBox);
@@ -462,7 +468,6 @@
         private System.Windows.Forms.Label mobileCheckLabel;
         private System.Windows.Forms.Label nameCheckLabel;
         private System.Windows.Forms.Label idCheckLabel;
-        private System.Windows.Forms.Button showAllButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.TextBox gpaPointTextBox;
         private System.Windows.Forms.Label gpaPointLabel;
@@ -470,7 +475,7 @@
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.Label ageLabel;
         private System.Windows.Forms.Label addressLabel;
-        private System.Windows.Forms.TextBox MobileTextBox;
+        private System.Windows.Forms.TextBox mobileTextBox;
         private System.Windows.Forms.Label MobileLabel;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label nameLabel;
@@ -478,7 +483,7 @@
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.GroupBox gpaPointGroupBox;
-        private System.Windows.Forms.TextBox totalTextBox6;
+        private System.Windows.Forms.TextBox totalTextBox;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.TextBox minNameTextBox;
         private System.Windows.Forms.Label minNameabel;
@@ -496,6 +501,7 @@
         private System.Windows.Forms.RadioButton nameRadioButton;
         private System.Windows.Forms.RadioButton idRadioButton;
         private System.Windows.Forms.Label gpaPointCheckLabel;
+        private System.Windows.Forms.Button showButton;
     }
 }
 
