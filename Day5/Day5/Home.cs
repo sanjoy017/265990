@@ -28,14 +28,13 @@ namespace Day5
         {
             AddInformation();
 
-
         }
         private void AddInformation()
         {
             
-            {
-                MessageBox.Show("Id must be 4 character");
-            }
+            
         }
+        Boolean check = false;
+        
     }
 }
