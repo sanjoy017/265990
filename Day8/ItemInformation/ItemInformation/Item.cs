@@ -60,6 +60,29 @@ namespace ItemInformation
 
         }
 
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Server=PC-301-20\SQLEXPRESS; Database=CoffeShop; Integrated Security=True";
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
 
+            string commandstring = @"DELETE FROM Items WHERE ID= "+idTextBox.Text;
+            SqlCommand sqlCommand = new SqlCommand(commandstring, sqlConnection);
+
+            sqlConnection.Open();
+
+            // sqlCommand.ExecuteNonQuery();
+
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+            DataTable dataTable = new DataTable();
+
+            sqlDataAdapter.Fill(dataTable);
+
+            showDataGridView.DataSource = dataTable;
+
+
+            sqlConnection.Close();
+
+        }
     }
 }
