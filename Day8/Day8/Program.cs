@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ItemInformation
+namespace Day8
 {
     static class Program
     {
@@ -16,7 +16,9 @@ namespace ItemInformation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Item());
+            Application.Run(new customerInformationForm());
+            Application.Run(new Items());
+            Application.Run(new Quantity());
         }
     }
 }

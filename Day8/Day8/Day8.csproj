@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D8748E72-3E2F-4D4B-B135-59C6542E0240}</ProjectGuid>
+    <ProjectGuid>{2E5C87F3-09C7-48F1-9A68-D31219BAD479}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ItemInformation</RootNamespace>
-    <AssemblyName>ItemInformation</AssemblyName>
+    <RootNamespace>Day8</RootNamespace>
+    <AssemblyName>Day8</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,16 +46,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Item.cs">
+    <Compile Include="Customer Information.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Item.Designer.cs">
-      <DependentUpon>Item.cs</DependentUpon>
+    <Compile Include="Customer Information.Designer.cs">
+      <DependentUpon>Customer Information.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Items.Designer.cs">
+      <DependentUpon>Items.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Item.resx">
-      <DependentUpon>Item.cs</DependentUpon>
+    <Compile Include="Quantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quantity.Designer.cs">
+      <DependentUpon>Quantity.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Customer Information.resx">
+      <DependentUpon>Customer Information.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Items.resx">
+      <DependentUpon>Items.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Quantity.resx">
+      <DependentUpon>Quantity.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
