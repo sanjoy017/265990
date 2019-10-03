@@ -8,11 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Day8.BLL;
+using Day8.Model;
 
 namespace Day8
 {
     public partial class customerInformationForm : Form
     {
+        CustomerManager _customerManager = new CustomerManager();
+        Customer _customer = new Customer();
+        Delete _delete = new Delete();
+        Update _update = new Update();
+        Search _search = new Search();
+
         public customerInformationForm()
         {
             InitializeComponent();
@@ -20,215 +28,170 @@ namespace Day8
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Connection();
+            _customer.CustomerName = customerNameTextBox.Text;
+            //_customer.Contact = Convert.ToInt32(contactNoTextBox.Text);
+            _customer.Address =addressTextBox.Text;
 
-        }
-
-        private void Connection()
-        {
-            try
+            bool isAdded = false;
+            if (_customerManager.IsNameExists(_customer.CustomerName))
             {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
+                MessageBox.Show(_customer.CustomerName + " Already Exists");
+                return;
+            }
+            if (!String.IsNullOrEmpty(_customer.CustomerName))
+            {
+                if (!String.IsNullOrEmpty(contactNoTextBox.Text))
 
-                //Command
-                string commandString = @"INSERT INTO CustomerInformation(CustomerName,ContactNo,Address) VALUES('" + customerNameTextBox.Text + "'," + contactNoTextBox.Text + ",'" + addressTextBox.Text + "')";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+                    if (!String.IsNullOrEmpty(_customer.Address))
+                    {
+                        _customer.Contact = Convert.ToInt32(contactNoTextBox.Text);
 
-                //Connection Open
-                sqlConnection.Open();
+                        isAdded = _customerManager.Add(_customer);
+                        
+                        if (!isAdded)
+                        {
+                            MessageBox.Show("Your Information Add Sucessfully");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Not Add Your Information");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Address box must be fillup");
+                        return;
+                    }
 
-                int isexcuted = sqlCommand.ExecuteNonQuery();
-                if (isexcuted > 0)
-                {
-                    MessageBox.Show("Your Information Add Sucessfully");
-                }
                 else
                 {
-                    MessageBox.Show("Not Add Your Information");
+                    MessageBox.Show("Contact No Box must be fillup");
+                    return;
                 }
-
-                //Close
-                sqlConnection.Close();
             }
-            catch(Exception exception)
+            else
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("Name Box must be fillup");
             }
-
-
+            showDataGridView.DataSource=_customerManager.ShowInformation();
         }
-
         private void showButton_Click(object sender, EventArgs e)
         {
-            ShowInformation();
+           showDataGridView.DataSource =_customerManager.ShowInformation();
         }
-        private void ShowInformation()
-        {
-            try
-            {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"SELECT * FROM CustomerInformation";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                //show
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                DataTable dataTable = new DataTable();
-
-                showDataGridView.DataSource = dataTable;
-
-                sqlDataAdapter.Fill(dataTable);
-
-                
-
-                //Close
-                sqlConnection.Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-        }
+        
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            Delete();
+            
+            if (string.IsNullOrEmpty(deletedIDTextBox.Text))
+            {
+                MessageBox.Show("You must fillup id");
+            }
+            _delete.Id = Convert.ToInt32(deletedIDTextBox.Text);
+            if (_customerManager.Delete(_delete))
+            {
+                MessageBox.Show("Delete Successfull");
+
+            }
+            else
+            {
+                MessageBox.Show("Not delete");
+            }
+            showDataGridView.DataSource = _customerManager.ShowInformation();
+          
         }
 
-        private void Delete()
-        {
-            try
-            {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"DELETE FROM CustomerInformation WHERE ID="+deletedIDTextBox.Text+"";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                int isexcuted = sqlCommand.ExecuteNonQuery();
-                if (isexcuted > 0)
-                {
-                    MessageBox.Show("Your Information Deleted Sucessfully");
-                }
-                else
-                {
-                    MessageBox.Show("Not Delete Your Information");
-                }
-
-                //Close
-                sqlConnection.Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-
-        }
+        
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            Update();
-        }
-
-        private void Update()
-        {
-            try
+            
+            if (string.IsNullOrEmpty(deletedIDTextBox.Text))
             {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"UPDATE CustomerInformation SET CustomerName='"+customerNameTextBox.Text+"',ContactNo='"+contactNoTextBox.Text+"',Address='"+addressTextBox.Text+"' WHERE ID='"+deletedIDTextBox.Text+"'";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                int isexcuted = sqlCommand.ExecuteNonQuery();
-                if (isexcuted > 0)
-                {
-                    MessageBox.Show("Your Information Updated Sucessfully");
-                }
-                else
-                {
-                    MessageBox.Show("Not Update Your Information");
-                }
-
-                //Close
-                sqlConnection.Close();
+                MessageBox.Show("Id Must be fillup");
+                return;
             }
-            catch (Exception exception)
+            if (string.IsNullOrEmpty(customerNameTextBox.Text))
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("Name must be fillup");
+                return;
+            }
+            _update.Id = Convert.ToInt32(deletedIDTextBox.Text);
+            _update.Name = customerNameTextBox.Text;
+            _update.Contact = Convert.ToInt32(contactNoTextBox.Text);
+            _update.Address = addressTextBox.Text;
+           if(_customerManager.Update(_update))
+            {
+                MessageBox.Show("Update Your Information");
+                showDataGridView.DataSource= _customerManager.ShowInformation();
             }
 
 
+            //Update(customerNameTextBox.Text,Convert.ToInt32(contactNoTextBox.Text),addressTextBox.Text,Convert.ToInt32(deletedIDTextBox.Text));
         }
+
+       
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            Search();
+            _search.Name = searchTextBox.Text;
+            if (string.IsNullOrEmpty(_search.Name))
+            {
+                MessageBox.Show("Search name Must be fillup");
+                return;
+            }
+            DataTable dataTable = _customerManager.Search(_search);
+            if(dataTable != null)
+            {
+                MessageBox.Show("Found");
+                showDataGridView.DataSource = dataTable;
+            }
+            else
+            {
+
+                MessageBox.Show("Not found");
+            }
+
+            
         }
 
-        private void Search()
+        
+
+        private void TextInput(KeyPressEventArgs e)
         {
-            try
+            Char chr = e.KeyChar;
+            if (Char.IsDigit(chr) && chr != 8)
             {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"SELECT * FROM CustomerInformation WHERE CustomerName LIKE '"+searchTextBox.Text+"'";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                //show
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                DataTable dataTable = new DataTable();
-
-                showDataGridView.DataSource = dataTable;
-
-                sqlDataAdapter.Fill(dataTable);
-                if(dataTable.Rows.Count != 0)
-                {
-                    showDataGridView.DataSource = dataTable;
-
-                }
-                else
-                {
-                    MessageBox.Show("Not Found");
-                }
-
-
-
-                //Close
-                sqlConnection.Close();
+                e.Handled = true;
+                MessageBox.Show("Input only alphabetic characters");
             }
-            catch (Exception exception)
+        }
+        private void NumberInput(KeyPressEventArgs e)
+        {
+            Char chr = e.KeyChar;
+            if (!Char.IsDigit(chr) && chr != 8)
             {
-                MessageBox.Show(exception.Message);
+                e.Handled = true;
+                MessageBox.Show("Input only numbers...");
             }
+        }
+        
 
+        private void CustomerNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextInput(e);
+        }
 
+        private void ContactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            NumberInput(e);
+        }
 
-
+        private void DeletedId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            NumberInput(e);
         }
     }
 }

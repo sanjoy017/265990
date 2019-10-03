@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Day8.BLL;
+using Day8.Model;
 
 namespace Day8
 {
     public partial class Items : Form
     {
+        ItemManager _itemManager = new ItemManager();
+        Item _item = new Item();
         public Items()
         {
             InitializeComponent();
@@ -20,161 +24,75 @@ namespace Day8
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Connection();
-        }
-        private void Connection()
-        {
-            try
+            string item= orderTextBox.Text;
+            bool isAdd = false;
+            if (_itemManager.IsItemExists(item))
             {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"INSERT INTO ItemsInformation(OrderName) VALUES('" + orderTextBox.Text + "')";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                int isexcuted = sqlCommand.ExecuteNonQuery();
-                if (isexcuted > 0)
-                {
-                    MessageBox.Show("Your Information Add Sucessfully");
-                }
-                else
-                {
-                    MessageBox.Show("Not Add Your Information");
-                }
-
-                //Close
-                sqlConnection.Close();
+                MessageBox.Show("Item already exists");
+                return;
             }
-            catch (Exception exception)
+            if (string.IsNullOrEmpty(item))
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("Please insert your Order");
+                return;
             }
-
-
+            _item.Items = orderTextBox.Text;
+            isAdd = _itemManager.Connection(_item);
+            if (!isAdd)
+            {
+                MessageBox.Show("Your Information added");
+                itemsDataGridView.DataSource = _itemManager.ShowItemInformation();
+            }
+            else
+            {
+                MessageBox.Show("Not add");
+                return;
+            }
+            
+             
         }
-
         private void showButton_Click(object sender, EventArgs e)
         {
-            ShowInformation();
+           itemsDataGridView.DataSource = _itemManager.ShowItemInformation();   
         }
-        private void ShowInformation()
-        {
-            try
-            {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"SELECT * FROM ItemsInformation";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                //show
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                DataTable dataTable = new DataTable();
-
-                itemsGataGridView.DataSource = dataTable;
-
-                sqlDataAdapter.Fill(dataTable);
-
-
-
-                //Close
-                sqlConnection.Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-        }
-
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            Delete();
-        }
-
-        private void Delete()
-        {
-            try
+            if (string.IsNullOrEmpty(idTextBox.Text))
             {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"DELETE FROM ItemsInformation WHERE ID=" + idTextBox.Text + "";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                int isexcuted = sqlCommand.ExecuteNonQuery();
-                if (isexcuted > 0)
-                {
-                    MessageBox.Show("Your Information Deleted Sucessfully");
-                }
-                else
-                {
-                    MessageBox.Show("Not Delete Your Information");
-                }
-
-                //Close
-                sqlConnection.Close();
+                MessageBox.Show("You must fillup id");
             }
-            catch (Exception exception)
+            if (_itemManager.Delete(Convert.ToInt32(idTextBox.Text)))
             {
-                MessageBox.Show(exception.Message);
-            }
+                MessageBox.Show("Delete Successfull");
 
+            }
+            else
+            {
+                MessageBox.Show("Not delete");
+            }
+            itemsDataGridView.DataSource = _itemManager.ShowItemInformation();
         }
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            Update();
+            
+            if (string.IsNullOrEmpty(idTextBox.Text))
+            {
+                MessageBox.Show("Id must be fillup");
+                return;
+            }
+            if (string.IsNullOrEmpty(orderTextBox.Text))
+            {
+                MessageBox.Show("Order must be fillup");
+                return;
+            }
+            if (_itemManager.Update(orderTextBox.Text, Convert.ToInt32(idTextBox.Text)))
+            {
+                MessageBox.Show("Your information updated");
+                itemsDataGridView.DataSource = _itemManager.ShowItemInformation();
+            }
         }
 
-        private void Update()
-        {
-            try
-            {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"UPDATE ItemsInformation SET OrderName='" + orderTextBox.Text + "' WHERE ID='" + idTextBox.Text + "'";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                int isexcuted = sqlCommand.ExecuteNonQuery();
-                if (isexcuted > 0)
-                {
-                    MessageBox.Show("Your Information Updated Sucessfully");
-                }
-                else
-                {
-                    MessageBox.Show("Not Update Your Information");
-                }
-
-                //Close
-                sqlConnection.Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-
-
-        }
+        
     }
 }

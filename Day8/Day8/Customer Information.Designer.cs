@@ -30,6 +30,8 @@
         {
             this.addButton = new System.Windows.Forms.Button();
             this.customerInformationGroupBox = new System.Windows.Forms.GroupBox();
+            this.deletedIDTextBox = new System.Windows.Forms.TextBox();
+            this.deletedIDLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.showButton = new System.Windows.Forms.Button();
@@ -43,8 +45,6 @@
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchNameLabel = new System.Windows.Forms.Label();
-            this.deletedIDLabel = new System.Windows.Forms.Label();
-            this.deletedIDTextBox = new System.Windows.Forms.TextBox();
             this.customerInformationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +80,24 @@
             this.customerInformationGroupBox.TabStop = false;
             this.customerInformationGroupBox.Text = "Customer Information";
             // 
+            // deletedIDTextBox
+            // 
+            this.deletedIDTextBox.Location = new System.Drawing.Point(135, 167);
+            this.deletedIDTextBox.MaxLength = 100;
+            this.deletedIDTextBox.Name = "deletedIDTextBox";
+            this.deletedIDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.deletedIDTextBox.TabIndex = 10;
+            this.deletedIDTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DeletedId_KeyPress);
+            // 
+            // deletedIDLabel
+            // 
+            this.deletedIDLabel.AutoSize = true;
+            this.deletedIDLabel.Location = new System.Drawing.Point(30, 170);
+            this.deletedIDLabel.Name = "deletedIDLabel";
+            this.deletedIDLabel.Size = new System.Drawing.Size(18, 13);
+            this.deletedIDLabel.TabIndex = 9;
+            this.deletedIDLabel.Text = "ID";
+            // 
             // deleteButton
             // 
             this.deleteButton.Location = new System.Drawing.Point(112, 263);
@@ -113,6 +131,7 @@
             // addressTextBox
             // 
             this.addressTextBox.Location = new System.Drawing.Point(135, 116);
+            this.addressTextBox.MaxLength = 50;
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(100, 20);
             this.addressTextBox.TabIndex = 6;
@@ -123,13 +142,16 @@
             this.contactNoTextBox.Name = "contactNoTextBox";
             this.contactNoTextBox.Size = new System.Drawing.Size(100, 20);
             this.contactNoTextBox.TabIndex = 5;
+            this.contactNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContactNoTextBox_KeyPress);
             // 
             // customerNameTextBox
             // 
             this.customerNameTextBox.Location = new System.Drawing.Point(135, 37);
+            this.customerNameTextBox.MaxLength = 50;
             this.customerNameTextBox.Name = "customerNameTextBox";
             this.customerNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.customerNameTextBox.TabIndex = 4;
+            this.customerNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustomerNameTextBox_KeyPress);
             // 
             // addressLabel
             // 
@@ -169,6 +191,7 @@
             // searchTextBox
             // 
             this.searchTextBox.Location = new System.Drawing.Point(433, 253);
+            this.searchTextBox.MaxLength = 50;
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(100, 20);
             this.searchTextBox.TabIndex = 3;
@@ -191,22 +214,6 @@
             this.searchNameLabel.Size = new System.Drawing.Size(35, 13);
             this.searchNameLabel.TabIndex = 5;
             this.searchNameLabel.Text = "Name";
-            // 
-            // deletedIDLabel
-            // 
-            this.deletedIDLabel.AutoSize = true;
-            this.deletedIDLabel.Location = new System.Drawing.Point(30, 170);
-            this.deletedIDLabel.Name = "deletedIDLabel";
-            this.deletedIDLabel.Size = new System.Drawing.Size(18, 13);
-            this.deletedIDLabel.TabIndex = 9;
-            this.deletedIDLabel.Text = "ID";
-            // 
-            // deletedIDTextBox
-            // 
-            this.deletedIDTextBox.Location = new System.Drawing.Point(135, 167);
-            this.deletedIDTextBox.Name = "deletedIDTextBox";
-            this.deletedIDTextBox.Size = new System.Drawing.Size(100, 20);
-            this.deletedIDTextBox.TabIndex = 10;
             // 
             // customerInformationForm
             // 

@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.itemsGroupBox = new System.Windows.Forms.GroupBox();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.idLabel = new System.Windows.Forms.Label();
             this.updateButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.showButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.orderTextBox = new System.Windows.Forms.TextBox();
             this.orderLabel = new System.Windows.Forms.Label();
-            this.itemsGataGridView = new System.Windows.Forms.DataGridView();
-            this.idLabel = new System.Windows.Forms.Label();
-            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.itemsDataGridView = new System.Windows.Forms.DataGridView();
             this.itemsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsGataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // itemsGroupBox
@@ -58,6 +58,22 @@
             this.itemsGroupBox.TabIndex = 0;
             this.itemsGroupBox.TabStop = false;
             this.itemsGroupBox.Text = "Items";
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(101, 93);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(100, 20);
+            this.idTextBox.TabIndex = 4;
+            // 
+            // idLabel
+            // 
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(17, 93);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(18, 13);
+            this.idLabel.TabIndex = 3;
+            this.idLabel.Text = "ID";
             // 
             // updateButton
             // 
@@ -115,42 +131,26 @@
             this.orderLabel.TabIndex = 0;
             this.orderLabel.Text = "Order";
             // 
-            // itemsGataGridView
+            // itemsDataGridView
             // 
-            this.itemsGataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsGataGridView.Location = new System.Drawing.Point(304, 47);
-            this.itemsGataGridView.Name = "itemsGataGridView";
-            this.itemsGataGridView.Size = new System.Drawing.Size(240, 200);
-            this.itemsGataGridView.TabIndex = 1;
-            // 
-            // idLabel
-            // 
-            this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(17, 93);
-            this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(18, 13);
-            this.idLabel.TabIndex = 3;
-            this.idLabel.Text = "ID";
-            // 
-            // idTextBox
-            // 
-            this.idTextBox.Location = new System.Drawing.Point(101, 93);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idTextBox.TabIndex = 4;
+            this.itemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemsDataGridView.Location = new System.Drawing.Point(304, 47);
+            this.itemsDataGridView.Name = "itemsDataGridView";
+            this.itemsDataGridView.Size = new System.Drawing.Size(240, 200);
+            this.itemsDataGridView.TabIndex = 1;
             // 
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 363);
-            this.Controls.Add(this.itemsGataGridView);
+            this.Controls.Add(this.itemsDataGridView);
             this.Controls.Add(this.itemsGroupBox);
             this.Name = "Items";
             this.Text = "Items";
             this.itemsGroupBox.ResumeLayout(false);
             this.itemsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsGataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -164,7 +164,7 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.TextBox orderTextBox;
         private System.Windows.Forms.Label orderLabel;
-        private System.Windows.Forms.DataGridView itemsGataGridView;
+        private System.Windows.Forms.DataGridView itemsDataGridView;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label idLabel;
     }

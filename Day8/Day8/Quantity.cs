@@ -8,11 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Day8.BLL;
+using Day8.Model;
 
 namespace Day8
 {
     public partial class Quantity : Form
     {
+        QuantityManager _quantityManager = new QuantityManager();
+        
         public Quantity()
         {
             InitializeComponent();
@@ -20,160 +24,76 @@ namespace Day8
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Connection();
-        }
-        private void Connection()
-        {
-            try
+            
+           int quantity =Convert.ToInt32(quantityTextBox.Text);
+            bool isAdd = false;
+           
+            if (quantity==0)
             {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"INSERT INTO QuantityInformation(Quantity) VALUES('"+quantityTextBox.Text+"')";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                int isexcuted = sqlCommand.ExecuteNonQuery();
-                if (isexcuted > 0)
-                {
-                    MessageBox.Show("Your Information Add Sucessfully");
-                }
-                else
-                {
-                    MessageBox.Show("Not Add Your Information");
-                }
-
-                //Close
-                sqlConnection.Close();
+                MessageBox.Show("Please insert your Order");
+                return;
             }
-            catch (Exception exception)
+             isAdd = _quantityManager.Connection(quantity);
+            if (!isAdd)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("Your Information added");
+                quantityDataGridView.DataSource = _quantityManager.ShowInformation();
+            }
+            else
+            {
+                MessageBox.Show("Not add");
+                return;
             }
 
         }
+
 
         private void showButton_Click(object sender, EventArgs e)
         {
-            ShowInformation();
+            quantityDataGridView.DataSource = _quantityManager.ShowInformation();
         }
-        private void ShowInformation()
-        {
-            try
-            {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"SELECT * FROM QuantityInformation";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                //show
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                DataTable dataTable = new DataTable();
-
-                quantityDataGridView.DataSource = dataTable;
-
-                sqlDataAdapter.Fill(dataTable);
-
-
-
-                //Close
-                sqlConnection.Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-        }
+        
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            Delete();
+            if (string.IsNullOrEmpty(idTextBox.Text))
+            {
+                MessageBox.Show("You must fillup id");
+            }
+            if (_quantityManager.Delete(Convert.ToInt32(idTextBox.Text)))
+            {
+                MessageBox.Show("Delete Successfull");
+
+            }
+            else
+            {
+                MessageBox.Show("Not delete");
+            }
+            quantityDataGridView.DataSource = _quantityManager.ShowInformation();
         }
 
-        private void Delete()
-        {
-            try
-            {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"DELETE FROM QuantityInformation WHERE ID=" + idTextBox.Text + "";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                int isexcuted = sqlCommand.ExecuteNonQuery();
-                if (isexcuted > 0)
-                {
-                    MessageBox.Show("Your Information Deleted Sucessfully");
-                }
-                else
-                {
-                    MessageBox.Show("Not Delete Your Information");
-                }
-
-                //Close
-                sqlConnection.Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-
-        }
+        
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            Update();
+
+            if (string.IsNullOrEmpty(idTextBox.Text))
+            {
+                MessageBox.Show("Id must be fillup");
+                return;
+            }
+            if (string.IsNullOrEmpty(quantityTextBox.Text))
+            {
+                MessageBox.Show("Order must be fillup");
+                return;
+            }
+            if (_quantityManager.Update(Convert.ToInt32(quantityTextBox.Text), Convert.ToInt32(idTextBox.Text)))
+            {
+                MessageBox.Show("Your information updated");
+                quantityDataGridView.DataSource = _quantityManager.ShowInformation();
+            }
         }
 
-        private void Update()
-        {
-            try
-            {
-                //connection...
-                string connectionString = @"Server=Sanjoy-PC; Database=CoffeShop; Integrated Security=True";
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-
-                //Command
-                string commandString = @"UPDATE QuantityInformation SET Quantity='" + quantityTextBox.Text + "' WHERE ID='" + idTextBox.Text + "'";
-                SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-                //Connection Open
-                sqlConnection.Open();
-
-                int isexcuted = sqlCommand.ExecuteNonQuery();
-                if (isexcuted > 0)
-                {
-                    MessageBox.Show("Your Information Updated Sucessfully");
-                }
-                else
-                {
-                    MessageBox.Show("Not Update Your Information");
-                }
-
-                //Close
-                sqlConnection.Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-
-
-        }
+        
     }
 }

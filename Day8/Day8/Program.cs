@@ -16,8 +16,8 @@ namespace Day8
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new customerInformationForm());
-            Application.Run(new Items());
+            //Application.Run(new customerInformationForm());
+            //Application.Run(new Items());
             Application.Run(new Quantity());
         }
     }
